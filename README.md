@@ -1,4 +1,12 @@
-scpmonitor
-==========
+# SCP Monitor
+## Server side
 
-Simple Python3 monitor agent based on psutil and flask modules
+Simple monitor with REST based interface with __flask__ framework
+
+
+###Dependencies:
+
+* python3
+* pip3
+  * flask (http://flask.pocoo.org/)
+  * psutil (https://github.com/giampaolo/psutil)
