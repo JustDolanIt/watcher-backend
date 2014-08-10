@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 # ex: ts=4 sw=4 et
 
-import json
-from flask import Flask
+import flask
 from monitor import getData
 
 
-app = Flask('SCP Monitor Frontend')
+app = flask.Flask(__name__)
 
 @app.route('/ping')
 def ping():
-    return('{"reply": "pong"}')
+    return(flask.jsonify(**{"reply": "pong"}))
 
 @app.route('/info')
 def info():
-    return(json.dumps(getData()))
+    return(flask.jsonify(**getData()))
 
-app.run(host='0.0.0.0')
+if __name__=='__main__':
+
+    app.run(host='0.0.0.0', port=8081, debug=True)
