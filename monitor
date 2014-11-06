@@ -1,0 +1,20 @@
+server {
+  server_name scpfoundation.net;
+  listen 9876;
+  
+  location / {
+    proxy_pass http://localhost:36484/info;
+    proxy_redirect default;
+    proxy_set_header Host    $http_host;
+    proxy_set_header X-Real-IP    $remote_addr;
+    proxy_set_header X-Forwarder-Proto   http;
+  }
+
+  location /ping {
+    proxy_pass http://localhost:36484/ping;
+    proxy_redirect default;
+    proxy_set_header Host    $http_host;
+    proxy_set_header X-Real-IP    $remote_addr;
+    proxy_set_header X-Forwarder-Proto   http;
+  }
+}
